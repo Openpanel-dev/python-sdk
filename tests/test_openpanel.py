@@ -7,7 +7,11 @@ class TestOpenPanel(unittest.TestCase):
     def setUp(self):
         self.client_id = "CLIENT_ID"
         self.client_secret = "CLIENT_SECRET"
-        self.openpanel = OpenPanel(client_id=self.client_id, client_secret=self.client_secret)
+
+        def filter_function(payload):
+            return payload.get("payload", {}).get("name", "") != "Filtered Event"
+        
+        self.openpanel = OpenPanel(client_id=self.client_id, client_secret=self.client_secret, filter=filter_function)
 
     def test_sdk_methods(self):
         # Test track
@@ -33,10 +37,9 @@ class TestOpenPanel(unittest.TestCase):
         time.sleep(3)
 
         # Test track filtered
-        def filter_function(payload):
-            return payload["payload"]["name"] != "Filtered Event"
-        self.openpanel.filter = filter_function
+        self.openpanel.disabled = False
         self.openpanel.track("Filtered Event", {"key": "value"})
+        time.sleep(3)
         self.openpanel.track("Not Filtered Event", {"key": "value"})
         time.sleep(3)
 
