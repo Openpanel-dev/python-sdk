@@ -126,4 +126,4 @@ The OpenPanel SDK is designed to be thread-safe. You can call its methods from a
 
 ## Support
 
-For any issues or feature requests, please file an issue on our [GitHub repository](https://github.com/Openpanel-dev/openpanel/issues).
+For any issues or feature requests, please file an issue on our [GitHub repository](https://github.com/Openpanel-dev/python-sdk/issues).
