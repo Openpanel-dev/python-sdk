@@ -4,8 +4,6 @@ The OpenPanel Python SDK allows you to track user behavior in your Python applic
 
 ## Installation
 
-> ⚠️ This package is not yet published. So you cannot install it with `pip`
-
 You can install the OpenPanel Python SDK using pip:
 
 ```bash
